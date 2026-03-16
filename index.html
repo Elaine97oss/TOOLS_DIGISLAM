@@ -171,36 +171,77 @@
     <script src="database.js"></script>
 
     <script>
+// =========================================================================
+        // TEMPLATE CHECKLIST BERDASARKAN KELAS (UPDATE FINAL)
         // =========================================================================
-        // TEMPLATE CHECKLIST BERDASARKAN KELAS
-        // =========================================================================
-        const aktivitasStandard = [
-            { id: 1, nama: "FOTO TAMPAK DEPAN" }, { id: 2, nama: "FOTO DINDING LUAR" },
-            { id: 3, nama: "FOTO TOILET" }, { id: 4, nama: "FOTO DINDING DALAM" },
-            { id: 5, nama: "FOTO PLAFON" }, { id: 6, nama: "PEMBERSIHAN DINDING" },
-            { id: 7, nama: "PEMBERSIHAN DAN PERAWATAN LANTAI" }, { id: 8, nama: "PEMBERSIHAN PLAFON" },
-            { id: 9, nama: "PEMBERSIHAN ATAP BANGUNAN" }, { id: 10, nama: "PEMBERSIHAN LUAR GEDUNG" }
+        
+        // Foto 1-5 (Berlaku untuk semua kelas)
+        const baseFoto = [
+            { id: 1, nama: "FOTO TAMPAK DEPAN" },
+            { id: 2, nama: "FOTO DINDING LUAR" },
+            { id: 3, nama: "FOTO TOILET" },
+            { id: 4, nama: "FOTO DINDING DALAM" },
+            { id: 5, nama: "FOTO PLAFON" }
         ];
 
-        const aktivitasEkstraIndoorToilet = [
-            { id: 11, nama: "PEMBERSIHAN INDOOR BANGUNAN" }, { id: 12, nama: "KEBERSIHAN TOILET" }
+        // Pemetaan untuk KELAS 5
+        const aktivitasKelas5 = [
+            ...baseFoto,
+            { id: 6, nama: "PEMBERSIHAN DINDING" },
+            { id: 7, nama: "PEMBERSIHAN DAN PERAWATAN LANTAI" },
+            { id: 8, nama: "PEMBERSIHAN PLAFON" },
+            { id: 9, nama: "PEMBERSIHAN ATAP BANGUNAN" },
+            { id: 10, nama: "PEMBERSIHAN LUAR GEDUNG" },
+            { id: 11, nama: "PEMBERSIHAN INDOOR BANGUNAN" },
+            { id: 12, nama: "KEBERSIHAN TOILET" }
         ];
 
-        const aktivitasTaman = [
-            { id: 6, nama: "PEMELIHARAAN DAN PERAWATAN TAMAN" },
-            { id: 7, nama: "PENYAPUAN HALAMAN" },
-            { id: 8, nama: "PEMBERSIHAN SELOKAN / PARIT / SALURAN AIR" }
+        // Pemetaan untuk KELAS 4
+        const aktivitasKelas4 = [
+            ...baseFoto,
+            { id: 6, nama: "PEMBERSIHAN DINDING" },
+            { id: 7, nama: "PEMBERSIHAN DAN PERAWATAN LANTAI" },
+            { id: 8, nama: "PEMBERSIHAN PLAFON" },
+            { id: 9, nama: "PEMBERSIHAN ATAP BANGUNAN" },
+            { id: 10, nama: "PEMBERSIHAN LUAR GEDUNG" },
+            { id: 11, nama: "PEMBERSIHAN INDOOR BANGUNAN" },
+            { id: 12, nama: "PEMBERSIHAN MEUBELAIR" },
+            { id: 13, nama: "PEKERJAAN PEST AND RODENT CONTROL" },
+            { id: 14, nama: "KEBERSIHAN TOILET" }
         ];
 
+        // Pemetaan untuk KELAS 3 (dan KELAS 2)
+        const aktivitasKelas3 = [
+            ...baseFoto,
+            { id: 6, nama: "PEMBERSIHAN DINDING" },
+            { id: 7, nama: "PEMBERSIHAN DAN PERAWATAN LANTAI" },
+            { id: 8, nama: "PEMBERSIHAN PLAFON" },
+            { id: 9, nama: "PEMBERSIHAN ATAP BANGUNAN" },
+            { id: 10, nama: "PEMBERSIHAN LUAR GEDUNG" },
+            { id: 11, nama: "PEMBERSIHAN INDOOR BANGUNAN" },
+            { id: 12, nama: "PEMBERSIHAN MEUBELAIR" },
+            { id: 13, nama: "PEKERJAAN PEST AND RODENT CONTROL" },
+            { id: 14, nama: "PEKERJAAN HYGIENE SERVICE" },
+            { id: 15, nama: "TOILETRIES" },
+            { id: 16, nama: "KEBERSIHAN TOILET" }
+        ];
+
+        // Pemetaan untuk KELAS 6 (Khusus halaman, taman, dan saluran air)
+        const aktivitasKelas6 = [
+            ...baseFoto,
+            { id: 6, nama: "PEMELIHARAAN DAN PERAWATAN TERHADAP TAMAN DAN LAMPU TAMAN" },
+            { id: 7, nama: "PENYIRAMAN TANAMAN, PEMUPUKAN TANAMAN, PENGGEMBURAN TANAH" },
+            { id: 8, nama: "PEMANGKASAN TANAMAN/RUMPUT, PEMBERSIHAN RUMPUT LIAR" },
+            { id: 9, nama: "PEMELIHARAAN DAN PERAWATAN KEBERSIHAN AREA PARKIR & JALAN, MARKA JALAN & PENDESTRIAN" }
+        ];
+
+        // Menggabungkan ke dalam objek pemanggil
         const aktivitasPerKelas = {
-            "KELAS 2": aktivitasStandard, "KELAS 3": aktivitasStandard,
-            "KELAS 4": [...aktivitasStandard, ...aktivitasEkstraIndoorToilet],
-            "KELAS 5": [...aktivitasStandard, ...aktivitasEkstraIndoorToilet],
-            "KELAS 6": [
-                { id: 1, nama: "FOTO TAMPAK DEPAN" }, { id: 2, nama: "FOTO DINDING LUAR" },
-                { id: 3, nama: "FOTO TOILET" }, { id: 4, nama: "FOTO DINDING DALAM" },
-                { id: 5, nama: "FOTO PLAFON" }, ...aktivitasTaman
-            ]
+            "KELAS 2": aktivitasKelas3, // Kelas 2 disamakan dengan Kelas 3
+            "KELAS 3": aktivitasKelas3,
+            "KELAS 4": aktivitasKelas4,
+            "KELAS 5": aktivitasKelas5,
+            "KELAS 6": aktivitasKelas6
         };
 
         // =========================================================================
